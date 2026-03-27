@@ -224,7 +224,7 @@ const Icon = {
   ZoomOut: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M8 11h6"/></svg>,
   ZoomReset: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6" opacity="0.4"/></svg>,
   UserPlus: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>,
-  HeartPlus: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/><path d="M12 8v4M10 10h4" stroke="#fff" strokeWidth="1.5"/></svg>,
+  HeartPlus: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/><path d="M12 8v4M10 10h4" strokeWidth="1.5"/></svg>,
   Copy: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>,
   Warning: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>,
   Fullscreen: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>,
@@ -235,29 +235,29 @@ const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-primary: #0c0f14;
-  --bg-secondary: #141820;
-  --bg-card: #1a1f2b;
-  --bg-card-hover: #222838;
-  --bg-input: #161b26;
-  --border: #2a3040;
-  --border-light: #333a4d;
-  --text-primary: #e8eaf0;
-  --text-secondary: #8b92a5;
-  --text-muted: #5d6478;
-  --accent-blue: #4a9eff;
-  --accent-gold: #f0b744;
-  --accent-green: #34d399;
-  --accent-rose: #f472b6;
-  --accent-purple: #a78bfa;
-  --male-bg: #162235;
-  --male-border: #1e3a5f;
-  --male-text: #60a5fa;
-  --female-bg: #2a1527;
-  --female-border: #4a1942;
-  --female-text: #f0abfc;
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f2f5;
+  --bg-input: #f8f9fb;
+  --border: #e2e5eb;
+  --border-light: #d0d5dd;
+  --text-primary: #1a1d23;
+  --text-secondary: #5a6170;
+  --text-muted: #8b92a5;
+  --accent-blue: #2b7de9;
+  --accent-gold: #c8910a;
+  --accent-green: #0d9668;
+  --accent-rose: #d64292;
+  --accent-purple: #7c5cbf;
+  --male-bg: #eef4fc;
+  --male-border: #b6d4f7;
+  --male-text: #2563a8;
+  --female-bg: #fceef8;
+  --female-border: #edb8df;
+  --female-text: #a8357a;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
   --radius: 12px;
   --radius-sm: 8px;
   --transition: all 0.25s cubic-bezier(.4,0,.2,1);
@@ -280,7 +280,7 @@ body, #root {
 
 /* ── Header ── */
 .header {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, #0e1219 100%);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, #eef1f6 100%);
   border-bottom: 1px solid var(--border);
   padding: 16px 24px;
   display: flex;
@@ -304,7 +304,7 @@ body, #root {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent-gold) 0%, #f5d78e 100%);
+  background: linear-gradient(135deg, #7a5a0a 0%, var(--accent-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.5px;
@@ -313,7 +313,7 @@ body, #root {
 .header-brand .badge {
   font-size: 10px;
   background: var(--accent-gold);
-  color: #000;
+  color: #fff;
   padding: 2px 8px;
   border-radius: 20px;
   font-weight: 700;
@@ -347,13 +347,13 @@ body, #root {
 .btn:hover { background: var(--bg-card-hover); border-color: var(--border-light); transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
 .btn-primary { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
-.btn-primary:hover { background: #3d8be6; }
-.btn-danger { background: #7f1d1d; border-color: #991b1b; color: #fca5a5; }
-.btn-danger:hover { background: #991b1b; }
-.btn-success { background: #065f46; border-color: #047857; color: #6ee7b7; }
-.btn-success:hover { background: #047857; }
-.btn-rose { background: #4a1942; border-color: var(--female-border); color: var(--accent-rose); }
-.btn-rose:hover { background: #5c2054; }
+.btn-primary:hover { background: #1f6dd4; }
+.btn-danger { background: #fef2f2; border-color: #fca5a5; color: #b91c1c; }
+.btn-danger:hover { background: #fee2e2; }
+.btn-success { background: #ecfdf5; border-color: #6ee7b7; color: #047857; }
+.btn-success:hover { background: #d1fae5; }
+.btn-rose { background: #fdf2f8; border-color: var(--female-border); color: var(--accent-rose); }
+.btn-rose:hover { background: #fce7f3; }
 .btn-sm { padding: 5px 10px; font-size: 12px; }
 .btn-icon { padding: 6px; width: 32px; height: 32px; justify-content: center; }
 .btn-ghost { background: transparent; border-color: transparent; }
@@ -385,7 +385,7 @@ body, #root {
   position: relative;
 }
 .nav-tab:hover { color: var(--text-secondary); }
-.nav-tab.active { background: var(--bg-card); color: var(--accent-gold); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.nav-tab.active { background: var(--bg-card); color: var(--accent-gold); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .nav-tab .nav-count {
   font-size: 9px;
   background: var(--border);
@@ -398,7 +398,7 @@ body, #root {
 }
 .nav-tab.active .nav-count {
   background: var(--accent-gold);
-  color: #000;
+  color: #fff;
 }
 
 /* ── Search ── */
@@ -748,7 +748,7 @@ body, #root {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.35);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -804,11 +804,11 @@ body, #root {
   justify-content: center;
 }
 .confirm-dialog .confirm-icon.danger {
-  background: #7f1d1d33;
-  color: #fca5a5;
+  background: #fef2f2;
+  color: #dc2626;
 }
 .confirm-dialog .confirm-icon.warning {
-  background: #78350f33;
+  background: #fffbeb;
   color: var(--accent-gold);
 }
 .confirm-dialog .confirm-title {
@@ -1035,8 +1035,8 @@ body, #root {
   color: var(--accent-gold);
 }
 .toast.toast-error {
-  border-color: #f87171;
-  color: #f87171;
+  border-color: #dc2626;
+  color: #dc2626;
 }
 
 /* ── Keyboard Hint ── */
@@ -1132,8 +1132,8 @@ body, #root {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+::-webkit-scrollbar-thumb { background: #c4c9d4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a8adb8; }
 `;
 
 // ─── UTILITY COMPONENTS ──────────────────────────────────────
@@ -1314,7 +1314,7 @@ function ListView({ people, onSelect, selectedId }) {
                 ? <span className="list-badge" style={{ background: "var(--male-bg)", color: "var(--male-text)", border: "1px solid var(--male-border)" }}>L</span>
                 : <span className="list-badge" style={{ background: "var(--female-bg)", color: "var(--female-text)", border: "1px solid var(--female-border)" }}>P</span>
               }
-              {p.deathDate && <span className="list-badge" style={{ background: "#7f1d1d33", color: "#fca5a5", border: "1px solid #7f1d1d" }}>Almarhum</span>}
+              {p.deathDate && <span className="list-badge" style={{ background: "#fef2f2", color: "#b91c1c", border: "1px solid #fca5a5" }}>Almarhum</span>}
             </div>
           </div>
         );
@@ -1585,8 +1585,8 @@ function PersonForm({ person, people, onSave, onClose, prefill }) {
         <div className="modal-body">
           <div className="form-group">
             <label className="form-label">Nama Lengkap *</label>
-            <input className="form-input" placeholder="Masukkan nama lengkap" value={form.name} onChange={e => set("name", e.target.value)} autoFocus style={errors.name ? { borderColor: "#f87171" } : {}} />
-            {errors.name && <div className="form-hint" style={{ color: "#f87171" }}>{errors.name}</div>}
+            <input className="form-input" placeholder="Masukkan nama lengkap" value={form.name} onChange={e => set("name", e.target.value)} autoFocus style={errors.name ? { borderColor: "#dc2626" } : {}} />
+            {errors.name && <div className="form-hint" style={{ color: "#dc2626" }}>{errors.name}</div>}
           </div>
 
           <div className="form-group">
@@ -1608,8 +1608,8 @@ function PersonForm({ person, people, onSave, onClose, prefill }) {
             </div>
             <div className="form-group">
               <label className="form-label">Tanggal Wafat</label>
-              <input className="form-input" type="date" value={form.deathDate} onChange={e => set("deathDate", e.target.value)} style={errors.deathDate ? { borderColor: "#f87171" } : {}} />
-              {errors.deathDate && <div className="form-hint" style={{ color: "#f87171" }}>{errors.deathDate}</div>}
+              <input className="form-input" type="date" value={form.deathDate} onChange={e => set("deathDate", e.target.value)} style={errors.deathDate ? { borderColor: "#dc2626" } : {}} />
+              {errors.deathDate && <div className="form-hint" style={{ color: "#dc2626" }}>{errors.deathDate}</div>}
             </div>
           </div>
 
