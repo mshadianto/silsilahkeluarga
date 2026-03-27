@@ -226,6 +226,9 @@ const Icon = {
   UserPlus: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>,
   HeartPlus: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/><path d="M12 8v4M10 10h4" strokeWidth="1.5"/></svg>,
   Copy: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>,
+  Camera: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>,
+  MapPin: () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>,
+  Calendar: () => <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>,
   Warning: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>,
   Fullscreen: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>,
 };
@@ -608,6 +611,19 @@ body, #root {
   right: 8px;
 }
 
+.person-info-line {
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  line-height: 1.3;
+}
+.person-info-line svg { opacity: 0.6; flex-shrink: 0; }
+
 .person-children-count {
   font-size: 9px;
   color: var(--text-muted);
@@ -617,6 +633,77 @@ body, #root {
   align-items: center;
   justify-content: center;
   gap: 3px;
+}
+
+/* ── Photo Upload ── */
+.photo-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.photo-preview-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.photo-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border);
+}
+.photo-preview-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px dashed var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 10px;
+  gap: 4px;
+  background: var(--bg-input);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.photo-preview-placeholder:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: rgba(43,125,233,0.05);
+}
+.photo-remove-btn {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-secondary);
+  background: #dc2626;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  transition: var(--transition);
+}
+.photo-remove-btn:hover { background: #b91c1c; transform: scale(1.1); }
+.photo-upload-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.photo-upload-actions input[type="file"] { display: none; }
+.photo-size-hint {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
 }
 
 /* ── List View ── */
@@ -1192,13 +1279,23 @@ function PersonCard({ person, onClick, selected, generation, people }) {
         {person.photo ? <img src={person.photo} alt={person.name} /> : initials}
       </div>
       <div className="person-name">{person.name}</div>
-      <div className="person-meta">
-        {person.birthDate && <>{new Date(person.birthDate).getFullYear()}</>}
-        {person.deathDate && <> — {new Date(person.deathDate).getFullYear()}</>}
-        {!person.deathDate && person.birthDate && <> — Kini</>}
-        {age !== null && <> ({age} th)</>}
-      </div>
-      {person.birthPlace && <div className="person-meta" style={{ marginTop: 2 }}>{person.birthPlace}</div>}
+      {(person.birthPlace || person.birthDate) && (
+        <div className="person-info-line">
+          {person.birthPlace && <><Icon.MapPin /> {person.birthPlace}</>}
+        </div>
+      )}
+      {person.birthDate && (
+        <div className="person-info-line">
+          <Icon.Calendar />
+          {new Date(person.birthDate).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" })}
+          {age !== null && <span style={{ color: "var(--text-muted)" }}>({age} th)</span>}
+        </div>
+      )}
+      {person.deathDate && (
+        <div className="person-meta" style={{ marginTop: 2, fontStyle: "italic" }}>
+          Wafat {new Date(person.deathDate).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" })}
+        </div>
+      )}
       {childCount > 0 && (
         <div className="person-children-count">
           <Icon.UserPlus /> {childCount} anak
@@ -1303,9 +1400,11 @@ function ListView({ people, onSelect, selectedId }) {
             </div>
             <div className="list-info">
               <h4>{p.name}</h4>
-              <p>
-                {p.birthPlace || "—"} {p.birthDate ? `• ${new Date(p.birthDate).getFullYear()}` : ""} {age !== null ? `• ${age} tahun` : ""}
-                {childCount > 0 ? ` • ${childCount} anak` : ""}
+              <p style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+                {p.birthPlace && <span style={{ display: "inline-flex", alignItems: "center", gap: 2 }}><Icon.MapPin /> {p.birthPlace}</span>}
+                {p.birthDate && <span style={{ display: "inline-flex", alignItems: "center", gap: 2 }}>{p.birthPlace ? "•" : ""} <Icon.Calendar /> {new Date(p.birthDate).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" })}</span>}
+                {age !== null && <span>• {age} tahun</span>}
+                {childCount > 0 && <span>• {childCount} anak</span>}
               </p>
             </div>
             <div className="list-badges">
@@ -1619,9 +1718,59 @@ function PersonForm({ person, people, onSave, onClose, prefill }) {
           </div>
 
           <div className="form-group">
-            <label className="form-label">URL Foto</label>
-            <input className="form-input" placeholder="https://contoh.com/foto.jpg" value={form.photo} onChange={e => set("photo", e.target.value)} />
-            <div className="form-hint">Masukkan URL foto untuk ditampilkan di avatar</div>
+            <label className="form-label">Foto</label>
+            <div className="photo-upload-area">
+              <div className="photo-preview-wrapper">
+                {form.photo ? (
+                  <>
+                    <img src={form.photo} alt="Preview" className="photo-preview" />
+                    <button type="button" className="photo-remove-btn" onClick={() => set("photo", "")} title="Hapus foto">×</button>
+                  </>
+                ) : (
+                  <label className="photo-preview-placeholder" htmlFor="photo-upload-input">
+                    <Icon.Camera />
+                    <span>Upload</span>
+                  </label>
+                )}
+              </div>
+              <div className="photo-upload-actions">
+                <input
+                  type="file"
+                  id="photo-upload-input"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    if (file.size > 500 * 1024) {
+                      e.target.value = "";
+                      return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                      const img = new Image();
+                      img.onload = () => {
+                        const canvas = document.createElement("canvas");
+                        const maxSize = 200;
+                        let w = img.width, h = img.height;
+                        if (w > h) { h = (h / w) * maxSize; w = maxSize; }
+                        else { w = (w / h) * maxSize; h = maxSize; }
+                        canvas.width = w;
+                        canvas.height = h;
+                        canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+                        set("photo", canvas.toDataURL("image/jpeg", 0.8));
+                      };
+                      img.src = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                    e.target.value = "";
+                  }}
+                />
+                <button type="button" className="btn btn-sm" onClick={() => document.getElementById("photo-upload-input").click()}>
+                  <Icon.Camera /> {form.photo ? "Ganti Foto" : "Pilih Foto"}
+                </button>
+              </div>
+              <div className="photo-size-hint">Maks 500KB • Akan di-resize otomatis ke 200px</div>
+            </div>
           </div>
 
           <div className="form-row">
